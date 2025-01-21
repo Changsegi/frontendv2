@@ -1,0 +1,81 @@
+@if (viewMode){
+  @if (currentOwner.id){
+    <h4>Owner</h4>
+    <div>
+      <label><strong>ID:</strong></label>
+      {{ currentOwner.id }}
+    </div>
+    <div>
+      <label><strong>Name:</strong></label> {{ currentOwner.name }}
+    </div>
+    <div>
+      <label><strong>Address:</strong></label> {{ currentOwner.address }}
+    </div>
+
+    <h6>Planes:</h6>
+    <ul class="list-group">
+      @for (plane of currentOwner.planes; track plane.id; let i = $index) {
+        <li
+          class="list-group-item"
+        >
+          {{ plane.p_type }}
+        </li>
+      }
+    </ul>
+
+    <h6>Cars:</h6>
+    <ul class="list-group">
+      @for (car of currentOwner.cars; track car.id; let i = $index) {
+        <li
+          class="list-group-item"
+        >
+          {{ car.c_type }}
+        </li>
+      }
+    </ul>
+
+    <a class="badge badge-warning" routerLink="/owners/{{ currentOwner.id }}">
+      Edit
+    </a>
+  } @else {<p>Please click on an Owner...</p>}
+} @else {
+  @if (currentOwner.id) {
+    <div class="edit-form">
+      <h4>Book</h4>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentOwner.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            [(ngModel)]="currentOwner.address"
+            name="address"
+          />
+        </div>
+      </form>
+
+      <button class="badge badge-danger mr-2" (click)="deleteOwner()">
+        Delete
+      </button>
+
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateOwner()">
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  } @else {<p>Cannot access this Owner...</p>}
+}

@@ -1,0 +1,47 @@
+<div>
+  <div class="submit-form">
+    @if (!submitted) {
+      <div class="form-group">
+        <label for="isbn">Plane type</label>
+        <input
+          type="text"
+          class="form-control"
+          id="isbn"
+          required
+          [(ngModel)]="plane.p_type"
+          name="isbn"
+        />
+      </div>
+      <div class="form-group">
+        <label for="title">Production Date</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          required
+          [(ngModel)]="plane.p_production_date"
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="owners">Owners</label>
+        <ng-multiselect-dropdown
+          id="owners"
+          [placeholder]="'custom placeholder'"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="selectedOwners"
+          (onSelect)="onItemSelect($event)"
+        >
+        </ng-multiselect-dropdown>
+
+      </div>
+
+      <button (click)="savePlane()" class="btn btn-success">Submit</button>
+    } @else {
+      <h4>Plane was added successfully!</h4>
+      <button class="btn btn-success" (click)="newPlane()">Add</button>
+    }
+  </div>
+</div>

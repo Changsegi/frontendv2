@@ -1,0 +1,26 @@
+<div class="list row">
+  <div class="col-md-6">
+    <h4>Planes List</h4>
+    <ul class="list-group">
+      @for (plane of planes; track plane.id; let i = $index) {
+        <li
+          class="list-group-item"
+          [class.active]="i == currentIndex"
+          (click)="setActivePlane(plane, i)"
+        >
+          {{ plane.p_type }}
+        </li>
+      }
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllPlanes()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    <app-plane-details
+      [viewMode]="true"
+      [currentPlane]="currentPlane"
+    ></app-plane-details>
+  </div>
+</div>

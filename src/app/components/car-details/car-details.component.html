@@ -1,0 +1,82 @@
+@if (viewMode){
+  @if (currentCar.id){
+    <h4>Car</h4>
+    <div>
+      <label><strong>ID:</strong></label>
+      {{ currentCar.id }}
+    </div>
+    <div>
+      <label><strong>Car type:</strong></label> {{ currentCar.c_type }}
+    </div>
+    <div>
+      <label><strong>Production date:</strong></label> {{ currentCar.c_production_date }}
+    </div>
+    <div class="form-group">
+      <h4>Owner List</h4>
+      <ul class="list-group">
+        @for (owner of currentCar.owners; track owner.id; let i = $index) {
+          <li
+            class="list-group-item"
+          >
+            {{ owner.name }}
+          </li>
+        }
+      </ul>
+    </div>
+    <a class="badge badge-warning" routerLink="/cars/{{ currentCar.id }}">
+      Edit
+    </a>
+  } @else {<p>Please click on a Car...</p>}
+} @else {
+  @if (currentCar.id) {
+    <div class="edit-form">
+      <h4>Car</h4>
+      <form>
+        <div class="form-group">
+          <label for="c_type">Car type</label>
+          <input
+            type="text"
+            class="form-control"
+            id="c_type"
+            [(ngModel)]="currentCar.c_type"
+            name="c_type"
+          />
+        </div>
+        <div class="form-group">
+          <label for="c_production_date">Car type:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="c_production_date"
+            [(ngModel)]="currentCar.c_production_date"
+            name="c_production_date"
+          />
+        </div>
+        <div class="form-group">
+          <h4>Owners List</h4>
+          <ul class="list-group">
+            @for (owner of currentCar.owners; track owner.id; let i = $index) {
+              <li
+                class="list-group-item"
+              >
+                {{ owner.name }}
+              </li>
+            }
+          </ul>
+        </div>
+      </form>
+
+      <button class="badge badge-danger mr-2" (click)="deleteCar()">
+        Delete
+      </button>
+
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateCar()">
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  } @else {<p>Cannot access this Book...</p>}
+}

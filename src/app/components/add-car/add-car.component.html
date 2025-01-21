@@ -1,0 +1,46 @@
+<div>
+  <div class="submit-form">
+    @if (!submitted) {
+      <div class="form-group">
+        <label for="c_type">Car type:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="c_type"
+          required
+          [(ngModel)]="car.c_type"
+          name="c_type"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="c_production_date">Production date:</label>
+        <input
+          class="form-control"
+          id="c_production_date"
+          required
+          [(ngModel)]="car.c_production_date"
+          name="c_production_date"
+        />
+      </div>
+      <div class="form-group">
+        <label for="owners">Owners</label>
+        <ng-multiselect-dropdown
+          id="owners"
+          [placeholder]="'custom placeholder'"
+          [settings]="dropdownSettings"
+          [data]="dropdownList"
+          [(ngModel)]="selectedOwners"
+          (onSelect)="onItemSelect($event)"
+        >
+        </ng-multiselect-dropdown>
+
+      </div>
+
+      <button (click)="saveCar()" class="btn btn-success">Submit</button>
+    } @else {
+      <h4>Car was added successfully!</h4>
+      <button class="btn btn-success" (click)="newCar()">Add</button>
+    }
+  </div>
+</div>

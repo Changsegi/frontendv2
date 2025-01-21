@@ -1,0 +1,31 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <a href="#" class="navbar-brand">DB</a>
+    <div class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="cars" class="nav-link">Cars</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="add-car" class="nav-link">Add car</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="planes" class="nav-link">Planes</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="add-plane" class="nav-link">Add plane</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="owners" class="nav-link">Owners</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="add-owner" class="nav-link">Add owner</a>
+      </li>
+    </div>
+  </nav>
+
+  <div class="container mt-3">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<router-outlet />

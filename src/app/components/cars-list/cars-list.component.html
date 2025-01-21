@@ -1,0 +1,27 @@
+<div class="list row">
+
+  <div class="col-md-6">
+    <h4>Cars List</h4>
+    <ul class="list-group">
+      @for (car of cars; track car.id; let i = $index) {
+        <li
+          class="list-group-item"
+          [class.active]="i == currentIndex"
+          (click)="setActiveCar(car, i)"
+        >
+          {{ car.c_type }}
+        </li>
+      }
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllCars()">
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    <app-car-details
+      [viewMode]="true"
+      [currentCar]="currentCar"
+    ></app-car-details>
+  </div>
+</div>

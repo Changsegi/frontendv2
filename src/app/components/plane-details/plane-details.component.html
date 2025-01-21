@@ -1,0 +1,82 @@
+@if (viewMode){
+  @if (currentPlane.id){
+    <h4>Plane</h4>
+    <div>
+      <label><strong>ID:</strong></label>
+      {{ currentPlane.id }}
+    </div>
+    <div>
+      <label><strong>Type:</strong></label> {{ currentPlane.p_type }}
+    </div>
+    <div>
+      <label><strong>Production date:</strong></label> {{ currentPlane.p_production_date }}
+    </div>
+    <div class="form-group">
+      <h4>Owner list</h4>
+      <ul class="list-group">
+        @for (owner of currentPlane.owners; track owner.id; let i = $index) {
+          <li
+            class="list-group-item"
+          >
+            {{ owner.name }}
+          </li>
+        }
+      </ul>
+    </div>
+    <a class="badge badge-warning" routerLink="/planes/{{ currentPlane.id }}">
+      Edit
+    </a>
+  } @else {<p>Please click on a Plane...</p>}
+} @else {
+  @if (currentPlane.id) {
+    <div class="edit-form">
+      <h4>Plane</h4>
+      <form>
+        <div class="form-group">
+          <label for="p_type">Plane Type</label>
+          <input
+            type="text"
+            class="form-control"
+            id="p_type"
+            [(ngModel)]="currentPlane.p_type"
+            name="p_type"
+          />
+        </div>
+        <div class="form-group">
+          <label for="p_production_date">Production Date</label>
+          <input
+            type="text"
+            class="form-control"
+            id="p_production_date"
+            [(ngModel)]="currentPlane.p_production_date"
+            name="p_production_date"
+          />
+        </div>
+        <div class="form-group">
+          <h4>Owners List</h4>
+          <ul class="list-group">
+            @for (owner of currentPlane.owners; track owner.id; let i = $index) {
+              <li
+                class="list-group-item"
+              >
+                {{ owner.name }}
+              </li>
+            }
+          </ul>
+        </div>
+      </form>
+
+      <button class="badge badge-danger mr-2" (click)="deletePlane()">
+        Delete
+      </button>
+
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updatePlane()">
+        Update
+      </button>
+      <p>{{ message }}</p>
+    </div>
+  } @else {<p>Cannot access this Plane...</p>}
+}

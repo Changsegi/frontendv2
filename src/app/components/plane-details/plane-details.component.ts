@@ -16,8 +16,10 @@ export class PlaneDetailsComponent {
   @Input() currentPlane: Plane = {
     id: 0,
     p_type:'',
-    p_production_date:''
+    p_production_date:'',
+    owners:[]
   }
+
 
   message = '';
 

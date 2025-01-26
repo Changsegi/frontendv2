@@ -20,6 +20,9 @@
       <li class="nav-item">
         <a routerLink="add-owner" class="nav-link">Add owner</a>
       </li>
+      <li class="nav-item">
+          <a routerLink="login" (click)="logout()" *ngIf="isAuthenticated()" class="nav-link">Logout</a>
+      </li>
     </div>
   </nav>
 

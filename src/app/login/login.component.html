@@ -1,0 +1,36 @@
+<form role="form" (submit)="login()">
+    <!-- <div class="alert alert-success" *ngIf="successLogin">{{successLogin}}</div>
+    <div class="alert alert-danger" *ngIf="errorLogin">{{errorLogin}}</div> -->
+    <table>
+        <thead>
+            <tr>
+                <th>Log in</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><label for="username">Username:</label></td>
+            </tr>
+            <tr>
+                <td><input type="text" name="username" [(ngModel)]="credentials.username"></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password</label></td>
+            </tr>
+            <tr>
+                <td><input type="password" name="password" [(ngModel)]="credentials.password"></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td><input type="submit" value="Login" class="btn btn-primary"></td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
+<!-- <div *ngIf="successLogin" class="alert alert-success">
+    <h4>Logged in!</h4>
+</div> -->
+<div *ngIf="errorLoginMessage" class="alert alert-danger">
+    <h4>{{errorLoginMessage}}</h4>
+</div>
